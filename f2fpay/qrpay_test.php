@@ -86,15 +86,15 @@ if (!empty($_POST['out_trade_no'])&& trim($_POST['out_trade_no'])!=""){
 	$qrPayRequestBuilder->setTotalAmount($totalAmount);
 	$qrPayRequestBuilder->setTimeExpress($timeExpress);
 	$qrPayRequestBuilder->setSubject($subject);
-	$qrPayRequestBuilder->setBody($body);
-	$qrPayRequestBuilder->setUndiscountableAmount($undiscountableAmount);
-	$qrPayRequestBuilder->setExtendParams($extendParamsArr);
-	$qrPayRequestBuilder->setGoodsDetailList($goodsDetailList);
+	//$qrPayRequestBuilder->setBody($body);
+	//$qrPayRequestBuilder->setUndiscountableAmount($undiscountableAmount);
+	//$qrPayRequestBuilder->setExtendParams($extendParamsArr);
+	//$qrPayRequestBuilder->setGoodsDetailList($goodsDetailList);
 	//$qrPayRequestBuilder->setStoreId($storeId);
-	$qrPayRequestBuilder->setOperatorId($operatorId);
+	//$qrPayRequestBuilder->setOperatorId($operatorId);
 	//$qrPayRequestBuilder->setAlipayStoreId($alipayStoreId);
 
-	$qrPayRequestBuilder->setAppAuthToken($appAuthToken);
+	//$qrPayRequestBuilder->setAppAuthToken($appAuthToken);
 
 
 	// 调用qrPay方法获取当面付应答
@@ -109,23 +109,25 @@ if (!empty($_POST['out_trade_no'])&& trim($_POST['out_trade_no'])!=""){
 		case "SUCCESS":
 			echo "支付宝创建订单二维码成功:"."<br>---------------------------------------<br>";
 			$response = $qrPayResult->getResponse();
-			$qrcode = $qrPay->create_erweima($response->qr_code);
+			$qrcode = $qrPay->create_erweima_from_oschina($response->qr_code);
 			echo $qrcode;
 			print_r($response);
 			
 			break;
 		case "FAILED":
 			echo "支付宝创建订单二维码失败!!!"."<br>--------------------------<br>";
-//			if(!empty($qrPayResult->getResponse())){
-//				print_r($qrPayResult->getResponse());
-//			}
+			$response = $qrPayResult->getResponse();
+			if(!empty($response)){
+				print_r($qrPayResult->getResponse());
+			}
 			break;
 		case "UNKNOWN":
 			echo "系统异常，状态未知!!!"."<br>--------------------------<br>";
-//			if(!empty($qrPayResult->getResponse())){
-//				print_r($qrPayResult->getResponse());
-//			}
-//			break;
+			$response = $qrPayResult->getResponse();
+			if(!empty($response)){
+				print_r($qrPayResult->getResponse());
+			}
+			break;
 		default:
 			echo "不支持的返回状态，创建订单二维码返回异常!!!";
 			break;

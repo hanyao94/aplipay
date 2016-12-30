@@ -35,13 +35,15 @@ if (!empty($_POST['out_trade_no'])&& trim($_POST['out_trade_no'])!=""){
             break;
         case "FAILED":
             echo "支付宝查询交易失败或者交易已关闭!!!"."<br>--------------------------<br>";
-            if(!empty($queryResult->getResponse())){
+            $response = $queryResult->getResponse();
+            if(!empty($response)){
                 print_r($queryResult->getResponse());
             }
             break;
         case "UNKNOWN":
             echo "系统异常，订单状态未知!!!"."<br>--------------------------<br>";
-            if(!empty($queryResult->getResponse())){
+            $response = $queryResult->getResponse();
+            if(!empty($response)){
                 print_r($queryResult->getResponse());
             }
             break;

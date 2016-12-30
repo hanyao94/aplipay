@@ -112,13 +112,15 @@ if (!empty($_POST['out_trade_no'])&& trim($_POST['out_trade_no'])!="") {
             break;
         case "FAILED":
             echo "支付宝支付失败!!!" . "<br>--------------------------<br>";
-            if (!empty($barPayResult->getResponse())) {
+            $response = $barPayResult->getResponse();
+            if (!empty($response)) {
                 print_r($barPayResult->getResponse());
             }
             break;
         case "UNKNOWN":
             echo "系统异常，订单状态未知!!!" . "<br>--------------------------<br>";
-            if (!empty($barPayResult->getResponse())) {
+            $response = $barPayResult->getResponse();
+            if (!empty($response)) {
                 print_r($barPayResult->getResponse());
             }
             break;

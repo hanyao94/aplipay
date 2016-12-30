@@ -363,4 +363,18 @@ class AlipayTradeService {
 		return $image;
 	}
 
+	/** *利用开源中国oschina 网站http://tool.oschina.net/qr 抓包调用，生成二维码
+	 * @param $data 		   二维码内容参数
+	 * @param string $error   纠错等级：L M Q H
+	 * @param string $margin  生成二维码离边框的距离 0-32
+	 * @param string $output  生成图片的格式 image/gif  image/jpeg  image/png
+	 * @param string $size	   二维码尺寸大小 1-4
+	 * @param string $type	   二维码类型 1-10
+	 * @return string
+	 */
+	function create_erweima_from_oschina($data,$error = 'L',$margin = '8',$output= 'image/jpeg',$size = '4',$type = '5'){
+		$data = urlencode($data);
+		$image = '<img src ="http://tool.oschina.net/action/qrcode/generate?data='.$data.'&output='.$output.'&error='.$error.'&type='.$type.'&margin='.$margin.'&size='.$size.'" />';
+		return $image;
+	}
 }

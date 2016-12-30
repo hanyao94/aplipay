@@ -90,7 +90,7 @@ class AlipayTradePayContentBuilder extends ContentBuilder
         $this->bizContent = substr($this->bizContent,0,-1);
         $this->bizContent.= "}";*/
         if(!empty($this->bizParas)){
-            $this->bizContent = json_encode($this->bizParas,JSON_UNESCAPED_UNICODE);
+            $this->bizContent = json_encode_ex($this->bizParas);
         }
 
         return $this->bizContent;
