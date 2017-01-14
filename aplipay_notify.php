@@ -41,15 +41,15 @@
 
 
         //WAIT_BUYER_PAY 	交易创建，等待买家付款
-        if ($param['trade_status'] == 'WAIT_BUYER_PAY '){
+        if ($param['trade_status'] == 'WAIT_BUYER_PAY'){
             $log->log(array("交易创建成功，等待买家付款","date: ".date("Y-m-d h:i:sa")));
             exit("failure");
         }
 
         //根据支付状态trade_status，TRADE_SUCCESS或TRADE_FINISHED时，支付宝才会认定为买家付款成功。
-        if ($param['trade_status'] == 'TRADE_SUCCESS' || 'TRADE_FINISHED' ){
+        if (($param['trade_status'] == 'TRADE_SUCCESS')||($param['trade_status'] =='TRADE_FINISHED')){
             //交易成功，更改状态
-            $log->log(array("交易成功，更改订单状态","date: ".date("Y-m-d h:i:sa")));
+            $log->log(array("交易成功，更改订单状态","trade_status: ".$param['trade_status'],"date: ".date("Y-m-d h:i:sa")));
             exit("SUCCESS");
         }
 
