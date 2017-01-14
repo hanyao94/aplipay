@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="F2Fpay-product-sdk">
+    <serverData>
+      <paths name="F2Fpay-product-sdk">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="api/F2FPay_Product_sdk_php" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
