@@ -43,6 +43,9 @@
         //校验通知中的seller_id（或者seller_email) 是否为这笔单据的对应的操作方
         if ($param['seller_email'] == LUYAN_EMAIL){
             $log->log(array("收款账户为卖方账户","date: ".date("Y-m-d h:i:sa")));
+        }else{
+            $log->log(array("收款账户不为卖方账户，非法","date: ".date("Y-m-d h:i:sa")));
+            exit("failure");
         }
 
         /**
