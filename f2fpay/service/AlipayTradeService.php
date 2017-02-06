@@ -370,7 +370,7 @@ class AlipayTradeService {
 	 * @param string $output  生成图片的格式 image/gif  image/jpeg  image/png
 	 * @param string $size	   二维码尺寸大小 1-4
 	 * @param string $type	   二维码类型 1-10
-	 * @return string
+	 * @return string	
 	 */
 	function create_erweima_from_oschina($data,$error = 'L',$margin = '8',$output= 'image/jpeg',$size = '4',$type = '5'){
 		$data = urlencode($data);
